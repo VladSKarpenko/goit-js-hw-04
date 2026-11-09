@@ -1,28 +1,43 @@
-/* Оголоси функцію getShippingMessage, яка очікує три параметри:
-country — рядок, країна доставки
-price — число, вартість товару
-deliveryFee — число, вартість доставки
+/* Оголоси функцію calcAverageCalories,
+ яка очікує один параметр days — масив об'єктів. 
+ Кожен об'єкт описує день тижня та кількість калорій calories, 
+ спожитих спортсменом у цей день. Функція повертає середньодобове значення калорій за тиждень.
 
-Значення параметрів задаються під час виклику. Функція повертає рядок:
-Shipping to <country> will cost <totalPrice> credits
-
-Де:
-<country> — країна доставки
-<totalPrice> — загальна вартість, що включає вартість товару і доставки
-
-Встав код нижче після оголошення функції для перевірки. Залиш його для перевірки ментором.
-
-console.log(getShippingMessage("Australia", 120, 50)); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingMessage("Germany", 80, 20)); // "Shipping to Germany will cost 100 credits"
-console.log(getShippingMessage("Sweden", 100, 20)); // "Shipping to Sweden will cost 120 credits" */
-
-/* Code */
-function getShippingMessage(country, price, deliveryFee) {
-  const totalPrice = price + deliveryFee;
-  const massage = `Shipping to ${country} will cost ${totalPrice} credits`;
-  return massage;
+ */
+function calcAverageCalories(days) {
+  let totalCalories = 0;
+  for (const day of days) {
+    totalCalories += day.calories;
+  }
+  if (days.length === 0) {
+    return 0;
+  } else {
+    return totalCalories / days.length;
+  }
 }
 
-console.log(getShippingMessage("Australia", 120, 50)); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingMessage("Germany", 80, 20)); // "Shipping to Germany will cost 100 credits"
-console.log(getShippingMessage("Sweden", 100, 20)); // "Shipping to Sweden will cost 120 credits"
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 3010 },
+    { day: "tuesday", calories: 3200 },
+    { day: "wednesday", calories: 3120 },
+    { day: "thursday", calories: 2900 },
+    { day: "friday", calories: 3450 },
+    { day: "saturday", calories: 3280 },
+    { day: "sunday", calories: 3300 },
+  ]),
+); // 3180
+
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 2040 },
+    { day: "tuesday", calories: 2270 },
+    { day: "wednesday", calories: 2420 },
+    { day: "thursday", calories: 1900 },
+    { day: "friday", calories: 2370 },
+    { day: "saturday", calories: 2280 },
+    { day: "sunday", calories: 2610 },
+  ]),
+); // 2270
+
+console.log(calcAverageCalories([])); // 0

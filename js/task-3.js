@@ -1,24 +1,40 @@
-/* Оголоси функцію getElementWidth, яка очікує три параметри:
+/* Об’єкт profile описує профіль користувача на ігровій платформі.
+ У його властивостях зберігається ім’я профілю username та кількість активних годин playTime,
+  проведених у грі.
+ */
 
-content — число, ширина контенту
-padding — число, горизонтальний паддінг для кожної зі сторін
-border — число, товщина бордера для кожної зі сторін
+const profile = {
+  username: "Jacob",
+  playTime: 300,
 
-Значення параметрів — числа, цілі або дробові. Функція повертає число — загальну ширину елемента за формулою:
-загальна ширина = content + padding * 2 + border * 2
+  changeUsername(newName) {
+    this.username = newName;
+  },
+  updatePlayTime(hours) {
+    this.playTime += hours;
+  },
 
-Встав код нижче після оголошення функції для перевірки. Залиш його для перевірки ментором.
+  getInfo() {
+    return `${this.username} has ${this.playTime} active hours!`;
+  },
+};
 
-console.log(getElementWidth(50, 8, 4)); // 74
-console.log(getElementWidth(60, 12, 8.5)); // 101
-console.log(getElementWidth(200, 0, 0)); // 200 */
+/* 
+Доповни об’єкт profile методами для роботи з його властивостями.
 
-/* Code */
-function getElementWidth(content, padding, border) {
-  const width = content + padding * 2 + border * 2;
-  return width;
-}
+Метод changeUsername(newName) повинен приймати рядок (нове ім’я) 
+в параметр newName та змінювати значення властивості username на нове. Нічого не повертає.
 
-console.log(getElementWidth(50, 8, 4)); // 74
-console.log(getElementWidth(60, 12, 8.5)); // 101
-console.log(getElementWidth(200, 0, 0)); // 200
+Метод updatePlayTime(hours) повинен приймати число (кількість годин) у параметр hours 
+та збільшити на нього значення властивості playTime. Нічого не повертає.
+
+Метод getInfo() має повертати рядок формату <Username> has <amount> active hours!, 
+де <Username> — це ім’я профілю, а <amount> — кількість ігрових годин.*/
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
